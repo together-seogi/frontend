@@ -6,6 +6,10 @@
   font-family: 'medium';
   src: url('./assets/fonts/Pretendard-Medium.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'semibold';
+  src: url('./assets/fonts/Pretendard-SemiBold.ttf') format('truetype');
+}
 
 @keyframes skeleton-animation {
   0% {
@@ -38,7 +42,7 @@ div {
 
   word-break: break-all;
   overflow-wrap: break-word;
-  white-space: pre-wrap;
+  /* white-space: pre-wrap; */
 }
 button {
   margin: 0;
