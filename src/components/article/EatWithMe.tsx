@@ -27,7 +27,7 @@ const EqualImageContainer = styled.div`
     aspect-ratio: auto 1/1;
 `;
 
-interface EatWithMeProps {
+export interface EatWithMeProps {
     image: string | undefined,
     title: string | undefined,
     content: string | undefined,

@@ -28,7 +28,7 @@ const LikePairContainer = styled.div`
     gap: 4px;
 `;
 
-interface TodayTipsProps {
+export interface TodayTipsProps {
     title: string | undefined,
     content: string | undefined,
     like: number | undefined,

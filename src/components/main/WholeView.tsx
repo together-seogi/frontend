@@ -4,6 +4,7 @@ import Colors from "../../consts/Colors";
 import TodayTips from "../article/TodayTips";
 import EatWithMe from "../article/EatWithMe";
 import ThisIsGood from "../article/ThisIsGood";
+import { ArticleListProps } from "../../pages/MainPage";
 
 const WholeViewContainer = styled.div`
     width: 100%;
@@ -13,7 +14,7 @@ const WholeViewContainer = styled.div`
 
     flex-direction: column;
     overflow: scroll;
-    gap: 24px;
+    gap: 20px;
 `;
 
 const TodayTipsContainer = styled.div`
@@ -24,17 +25,16 @@ const TodayTipsContainer = styled.div`
 
 const EatWithMeContainer = styled.div`
     width: 100%;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
 `;
 
-const EatWithMePairContainer = styled.div`
-    width: 100%;
-    flex-direction: row;
-    gap: 16px;
-`;
+interface WholeViewProps {
+    list: ArticleListProps[]
+};
 
-const WholeView = ({}) => {
+const WholeView = ({ list }: WholeViewProps) => {
     return (
         <WholeViewContainer>
             <TodayTipsContainer>
@@ -44,103 +44,51 @@ const WholeView = ({}) => {
                     size={20}
                     color={Colors.Black}
                 />
-                <TodayTips
-                    title={undefined}
-                    content={undefined}
-                    like={100}
-                    dislike={100}
-                    image={undefined}
-                />
-                <TodayTips
-                    title={undefined}
-                    content={undefined}
-                    like={100}
-                    dislike={100}
-                    image={undefined}
-                />
-                <TodayTips
-                    title={undefined}
-                    content={undefined}
-                    like={100}
-                    dislike={100}
-                    image={undefined}
-                />
+                { list.slice(0, 3).map((props, idx) => (
+                    <TodayTips
+                        key={idx}
+                        title={props.title}
+                        content={props.content}
+                        like={props.like}
+                        dislike={props.dislike}
+                        image={props.image}
+                    />
+                )) }
             </TodayTipsContainer>
+            <TextLoadingView
+                text="같이 먹어요"
+                font="semibold"
+                size={20}
+                color={Colors.Black}
+            />
             <EatWithMeContainer>
-                <TextLoadingView
-                    text="같이 먹어요"
-                    font="semibold"
-                    size={20}
-                    color={Colors.Black}
-                />
-                <EatWithMePairContainer>
+                { list.slice(3, 7).map((props, idx) => (
                     <EatWithMe
-                        image={undefined}
-                        title={undefined}
-                        content={undefined}
-                        like={100}
-                        dislike={100}
+                        key={idx}
+                        image={props.image}
+                        title={props.title}
+                        content={props.content}
+                        like={props.like}
+                        dislike={props.dislike}
                     />
-                    <EatWithMe
-                        image={undefined}
-                        title={undefined}
-                        content={undefined}
-                        like={100}
-                        dislike={100}
-                    />
-                </EatWithMePairContainer>
-                <EatWithMePairContainer>
-                    <EatWithMe
-                        image={undefined}
-                        title={undefined}
-                        content={undefined}
-                        like={100}
-                        dislike={100}
-                    />
-                    <EatWithMe
-                        image={undefined}
-                        title={undefined}
-                        content={undefined}
-                        like={100}
-                        dislike={100}
-                    />
-                </EatWithMePairContainer>
+                ))}
             </EatWithMeContainer>
+            <TextLoadingView
+                text="이거 좋아요"
+                font="semibold"
+                size={20}
+                color={Colors.Black}
+            />
             <EatWithMeContainer>
-                <TextLoadingView
-                    text="이거 좋아요"
-                    font="semibold"
-                    size={20}
-                    color={Colors.Black}
-                />
-                <EatWithMePairContainer>
+                { list.slice(7, 11).map((props, idx) => (
                     <ThisIsGood
-                        image={undefined}
-                        title={undefined}
-                        like={100}
-                        dislike={100}
+                        key={idx}
+                        image={props.image}
+                        title={props.title}
+                        like={props.like}
+                        dislike={props.dislike}
                     />
-                    <ThisIsGood
-                        image={undefined}
-                        title={undefined}
-                        like={100}
-                        dislike={100}
-                    />
-                </EatWithMePairContainer>
-                <EatWithMePairContainer>
-                    <ThisIsGood
-                        image={undefined}
-                        title={undefined}
-                        like={100}
-                        dislike={100}
-                    />
-                    <ThisIsGood
-                        image={undefined}
-                        title={undefined}
-                        like={100}
-                        dislike={100}
-                    />
-                </EatWithMePairContainer>
+                ))}
             </EatWithMeContainer>
         </WholeViewContainer>
     );

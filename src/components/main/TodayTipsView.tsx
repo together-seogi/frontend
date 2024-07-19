@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TodayTips from "../article/TodayTips";
+import TodayTips, { TodayTipsProps } from "../article/TodayTips";
 
 const TodayTipsViewContainer = styled.div`
     width: 100%;
@@ -12,30 +12,23 @@ const TodayTipsViewContainer = styled.div`
     gap: 20px;
 `;
 
-const TodayTipsView = () => {
+interface TodayTipsViewProps {
+    list: TodayTipsProps[]
+};
+
+const TodayTipsView = ({ list }: TodayTipsViewProps) => {
     return (
         <TodayTipsViewContainer>
-            <TodayTips
-                title={undefined}
-                content={undefined}
-                like={100}
-                dislike={100}
-                image={undefined}
-            />
-            <TodayTips
-                title={undefined}
-                content={undefined}
-                like={100}
-                dislike={100}
-                image={undefined}
-            />
-            <TodayTips
-                title={undefined}
-                content={undefined}
-                like={100}
-                dislike={100}
-                image={undefined}
-            />
+            { list.map((props, idx) => (
+                <TodayTips
+                    key={idx}
+                    title={props.title}
+                    content={props.content}
+                    like={props.like}
+                    dislike={props.dislike}
+                    image={props.image}
+                />
+            ))}
         </TodayTipsViewContainer>
     );
 };

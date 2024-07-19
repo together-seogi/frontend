@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Colors from "../../consts/Colors";
+import TextLoadingView from "../common/TextLoadingView";
 import ImageLoadingView from "../common/ImageLoadingView";
 import IconButton from "../common/IconButton";
-import TextLoadingView from "../common/TextLoadingView";
 
 const TopBarContainer = styled.div`
     width: 100%;

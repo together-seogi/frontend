@@ -27,7 +27,7 @@ const EqualImageContainer = styled.div`
     aspect-ratio: auto 1/1;
 `;
 
-interface ThisIsGoodProps {
+export interface ThisIsGoodProps {
     image: string | undefined,
     title: string | undefined,
     like: number | undefined,
