@@ -4,16 +4,19 @@ import CircleImageLoadingView from "../components/common/CircleImageLoadingView.
 import IconButton from "../components/common/IconButton.tsx";
 import {useState} from "react";
 import ThisIsGoodView from "../components/main/ThisIsGoodView.tsx";
-import {ArticleListProps} from "./MainPage.tsx";
+import MainPage, {ArticleListProps} from "./MainPage.tsx";
+import {useNavigate} from "react-router-dom";
 
 
 const ProfilePage = (props) => {
+    const navigate = useNavigate();
     const [hp, setHp] = useState(50);
-    const [articles, setArticles] = useState<ArticleListProps>(props.articles);
+    const [articles, setArticles] = useState<ArticleListProps>(props.articles || []);
+    
     return (
         <ProfileScreen>
             <ProfileTopBar>
-                <IconButton src={'arrow_forward'} size={28} onclick={()=>{}}/>
+                <IconButton src={'arrow_forward'} size={28} onclick={()=>{navigate('/')}}/>
                 <ProfileTopName>내 프로필</ProfileTopName>
                 <IconButton src={'draw'} size={28} onclick={()=>{}}/>
             </ProfileTopBar>
@@ -34,9 +37,9 @@ const ProfilePage = (props) => {
                 <HpLabel>HP {hp}/100</HpLabel>
                 <HpBar>
                     <Hp hp={hp} />
-                    <ThisIsGoodView list={articles}/>
                 </HpBar>
             </div>
+            <ThisIsGoodView list={articles}/>
         </ProfileScreen>
     );
 };
