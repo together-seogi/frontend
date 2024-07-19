@@ -1,63 +1,30 @@
 import styled from "styled-components";
-import ThisIsGood from "../article/ThisIsGood";
+import ThisIsGood, { ThisIsGoodProps } from "../article/ThisIsGood";
 
 const ThisIsGoodViewContainer = styled.div`
     width: 100%;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    overflow: scroll;
     gap: 16px;
 `;
 
-const ThisIsGoodViewPairContainer = styled.div`
-    width: 100%;
-    flex-direction: row;
-    gap: 16px;
-`;
+interface ThisIsGoodViewProps {
+    list: ThisIsGoodProps[]
+}
 
-const ThisIsGoodView = () => {
+const ThisIsGoodView = ({ list }: ThisIsGoodViewProps) => {
     return (
         <ThisIsGoodViewContainer>
-            <ThisIsGoodViewPairContainer>
+            { list.map((props, idx) => (
                 <ThisIsGood
-                    image={undefined}
-                    title={undefined}
-                    like={100}
-                    dislike={100}
+                    key={idx}
+                    image={props.image}
+                    title={props.title}
+                    like={props.like}
+                    dislike={props.dislike}
                 />
-                <ThisIsGood
-                    image={undefined}
-                    title={undefined}
-                    like={100}
-                    dislike={100}
-                />
-            </ThisIsGoodViewPairContainer>
-            <ThisIsGoodViewPairContainer>
-                <ThisIsGood
-                    image={undefined}
-                    title={undefined}
-                    like={100}
-                    dislike={100}
-                />
-                <ThisIsGood
-                    image={undefined}
-                    title={undefined}
-                    like={100}
-                    dislike={100}
-                />
-            </ThisIsGoodViewPairContainer>
-            <ThisIsGoodViewPairContainer>
-                <ThisIsGood
-                    image={undefined}
-                    title={undefined}
-                    like={100}
-                    dislike={100}
-                />
-                <ThisIsGood
-                    image={undefined}
-                    title={undefined}
-                    like={100}
-                    dislike={100}
-                />
-            </ThisIsGoodViewPairContainer>
+            ))}
         </ThisIsGoodViewContainer>
     );
 };

@@ -1,53 +1,31 @@
 import styled from "styled-components";
-import EatWithMe from "../article/EatWithMe";
+import EatWithMe, { EatWithMeProps } from "../article/EatWithMe";
 
 const EatWithMeViewContainer = styled.div`
     width: 100%;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    overflow: scroll;
     gap: 16px;
 `;
 
-const EatWithMeViewPairContainer = styled.div`
-    width: 100%;
-    flex-direction: row;
-    gap: 16px;
-`;
+interface EatWithMeViewProps {
+    list: EatWithMeProps[]
+}
 
-const EatWithMeView = () => {
+const EatWithMeView = ({ list }: EatWithMeViewProps) => {
     return (
         <EatWithMeViewContainer>
-            <EatWithMeViewPairContainer>
+            { list.map((props, idx) => (
                 <EatWithMe
-                    image={undefined}
-                    title={undefined}
-                    content={undefined}
-                    like={100}
-                    dislike={100}
+                    key={idx}
+                    image={props.image}
+                    title={props.title}
+                    content={props.content}
+                    like={props.like}
+                    dislike={props.dislike}
                 />
-                <EatWithMe
-                    image={undefined}
-                    title={undefined}
-                    content={undefined}
-                    like={100}
-                    dislike={100}
-                />
-            </EatWithMeViewPairContainer>
-            <EatWithMeViewPairContainer>
-                <EatWithMe
-                    image={undefined}
-                    title={undefined}
-                    content={undefined}
-                    like={100}
-                    dislike={100}
-                />
-                <EatWithMe
-                    image={undefined}
-                    title={undefined}
-                    content={undefined}
-                    like={100}
-                    dislike={100}
-                />
-            </EatWithMeViewPairContainer>
+            ))}
         </EatWithMeViewContainer>
     );
 };
