@@ -3,6 +3,7 @@ import ImageLoadingView from "../common/ImageLoadingView";
 import TextLoadingView from "../common/TextLoadingView";
 import Colors from "../../consts/Colors";
 import IconButton from "../common/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const TodayTipsContainer = styled.div`
     width: 100%;
@@ -33,12 +34,16 @@ export interface TodayTipsProps {
     content: string | undefined,
     like: number | undefined,
     dislike: number | undefined,
-    image: string | undefined
+    image: string | undefined,
+    id: number | undefined
 };
 
-const TodayTips = ({ title, content, like, dislike, image }: TodayTipsProps) => {
+const TodayTips = ({ title, content, like, dislike, image, id }: TodayTipsProps) => {
+    const navigate = useNavigate();
     return (
-        <TodayTipsContainer>
+        <TodayTipsContainer
+            onClick={() => navigate(`/detail/${id}`)}
+        >
             <ContentContainer>
                 <TextLoadingView
                     text={title}

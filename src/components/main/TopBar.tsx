@@ -3,6 +3,7 @@ import Colors from "../../consts/Colors";
 import TextLoadingView from "../common/TextLoadingView";
 import ImageLoadingView from "../common/ImageLoadingView";
 import IconButton from "../common/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const TopBarContainer = styled.div`
     width: 100%;
@@ -45,6 +46,7 @@ interface TopBarProps {
 };
 
 const TopBar = ({ tabIndex, onChangeTabIndex }: TopBarProps) => {
+    const navigate = useNavigate();
     return (
         <TopBarContainer>
             <LogoBar>
@@ -60,12 +62,12 @@ const TopBar = ({ tabIndex, onChangeTabIndex }: TopBarProps) => {
                     <IconButton
                         src="search"
                         size={28}
-                        onclick={() => {}}
+                        onclick={() => navigate("search")}
                     />
                     <IconButton
                         src="account"
                         size={28}
-                        onclick={() => {}}
+                        onclick={() => navigate("account")}
                     />
                 </IconBar>
             </LogoBar>

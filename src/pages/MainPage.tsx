@@ -23,7 +23,8 @@ export interface ArticleListProps {
     content: string | undefined,
     like: number | undefined,
     dislike: number | undefined,
-    image: string | undefined
+    image: string | undefined,
+    id: number | undefined
 };
 
 const MainPage = () => {
@@ -33,17 +34,17 @@ const MainPage = () => {
     useEffect(() => {
         setArticleList(
             [
-                {title: "1", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "2", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "3", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "4", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "5", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "6", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "7", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "8", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "9", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "10", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
-                {title: "11", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined},
+                {title: "1", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "2", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "3", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "4", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "5", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "6", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "7", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "8", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "9", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "10", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
+                {title: "11", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
             ]
         )
     }, [])

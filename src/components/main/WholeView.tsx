@@ -52,6 +52,7 @@ const WholeView = ({ list }: WholeViewProps) => {
                         like={props.like}
                         dislike={props.dislike}
                         image={props.image}
+                        id={props.id}
                     />
                 )) }
             </TodayTipsContainer>
@@ -70,6 +71,7 @@ const WholeView = ({ list }: WholeViewProps) => {
                         content={props.content}
                         like={props.like}
                         dislike={props.dislike}
+                        id={props.id}
                     />
                 ))}
             </EatWithMeContainer>
@@ -87,6 +89,7 @@ const WholeView = ({ list }: WholeViewProps) => {
                         title={props.title}
                         like={props.like}
                         dislike={props.dislike}
+                        id={props.id}
                     />
                 ))}
             </EatWithMeContainer>

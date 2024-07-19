@@ -3,6 +3,7 @@ import ImageLoadingView from "../common/ImageLoadingView";
 import TextLoadingView from "../common/TextLoadingView";
 import Colors from "../../consts/Colors";
 import IconButton from "../common/IconButton";
+import { useNavigate } from "react-router-dom";
 
 const EatWithMeContainer = styled.div`
     width: 100%;
@@ -32,12 +33,16 @@ export interface EatWithMeProps {
     title: string | undefined,
     content: string | undefined,
     like: number | undefined,
-    dislike: number | undefined
+    dislike: number | undefined,
+    id: number | undefined
 };
 
-const EatWithMe = ({ image, title, content, like, dislike }: EatWithMeProps) => {
+const EatWithMe = ({ image, title, content, like, dislike, id }: EatWithMeProps) => {
+    const navigate = useNavigate();
     return (
-        <EatWithMeContainer>
+        <EatWithMeContainer
+            onClick={() => navigate(`/detail/${id}`)}
+        >
             <EqualImageContainer>
                 <ImageLoadingView
                     src={image}

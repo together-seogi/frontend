@@ -3,6 +3,7 @@ import TextLoadingView from "../common/TextLoadingView";
 import IconButton from "../common/IconButton";
 import Colors from "../../consts/Colors";
 import ImageLoadingView from "../common/ImageLoadingView";
+import { useNavigate } from "react-router-dom";
 
 const ThisIsGoodContainer = styled.div`
     width: 100%;
@@ -31,12 +32,16 @@ export interface ThisIsGoodProps {
     image: string | undefined,
     title: string | undefined,
     like: number | undefined,
-    dislike: number | undefined
+    dislike: number | undefined,
+    id: number | undefined
 };
 
-const ThisIsGood = ({ image, title, like, dislike }: ThisIsGoodProps) => {
+const ThisIsGood = ({ image, title, like, dislike, id }: ThisIsGoodProps) => {
+    const navigate = useNavigate();
     return (
-        <ThisIsGoodContainer>
+        <ThisIsGoodContainer
+            onClick={() => navigate(`/detail/${id}`)}
+        >
             <EqualImageContainer>
                 <ImageLoadingView
                     src={image}
