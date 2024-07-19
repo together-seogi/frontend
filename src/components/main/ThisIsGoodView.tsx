@@ -23,6 +23,7 @@ const ThisIsGoodView = ({ list }: ThisIsGoodViewProps) => {
                     title={props.title}
                     like={props.like}
                     dislike={props.dislike}
+                    id={props.id}
                 />
             ))}
         </ThisIsGoodViewContainer>

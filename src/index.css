@@ -75,3 +75,9 @@ input {
   overflow-wrap: break-word;
   white-space: pre-wrap;
 }
+input::placeholder {
+  color: #A0A0A0;
+}
+input:focus {
+  outline: none;
+}

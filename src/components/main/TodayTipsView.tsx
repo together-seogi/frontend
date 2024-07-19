@@ -27,6 +27,7 @@ const TodayTipsView = ({ list }: TodayTipsViewProps) => {
                     like={props.like}
                     dislike={props.dislike}
                     image={props.image}
+                    id={props.id}
                 />
             ))}
         </TodayTipsViewContainer>

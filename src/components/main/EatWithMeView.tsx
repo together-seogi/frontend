@@ -24,6 +24,7 @@ const EatWithMeView = ({ list }: EatWithMeViewProps) => {
                     content={props.content}
                     like={props.like}
                     dislike={props.dislike}
+                    id={props.id}
                 />
             ))}
         </EatWithMeViewContainer>
