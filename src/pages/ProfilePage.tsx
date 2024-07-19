@@ -4,10 +4,12 @@ import CircleImageLoadingView from "../components/common/CircleImageLoadingView.
 import IconButton from "../components/common/IconButton.tsx";
 import {useState} from "react";
 import ThisIsGoodView from "../components/main/ThisIsGoodView.tsx";
+import {ArticleListProps} from "./MainPage.tsx";
 
 
 const ProfilePage = (props) => {
     const [hp, setHp] = useState(50);
+    const [articles, setArticles] = useState<ArticleListProps>(props.articles);
     return (
         <ProfileScreen>
             <ProfileTopBar>
@@ -18,11 +20,8 @@ const ProfilePage = (props) => {
             <ProfileContainer>
                 <CircleImageLoadingView src={props.profileImg} alt={'profile image'} size={60} objectFit={'cover'}/>
                 <NameCard>
-                    {/*<Name>{props.name}</Name>*/}
-                    {/*<Intro>{props.intro}</Intro>*/}
-
-                    <Name>기며노</Name>
-                    <Intro>이빈다</Intro>
+                    <Name>{props.name}</Name>
+                    <Intro>{props.intro}</Intro>
                 </NameCard>
             </ProfileContainer>
             <div style={{
@@ -35,9 +34,9 @@ const ProfilePage = (props) => {
                 <HpLabel>HP {hp}/100</HpLabel>
                 <HpBar>
                     <Hp hp={hp} />
+                    <ThisIsGoodView list={articles}/>
                 </HpBar>
             </div>
-            <ThisIsGoodView list={[]}/>
         </ProfileScreen>
     );
 };
