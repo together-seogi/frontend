@@ -1,24 +1,27 @@
 import styled from "styled-components";
-import ImageLoadingView from "../common/ImageLoadingView";
 import TextLoadingView from "../common/TextLoadingView";
 import Colors from "../../consts/Colors";
 import IconButton from "../common/IconButton";
-import { useNavigate } from "react-router-dom";
 
-const TodayTipsContainer = styled.div`
+const InfoContainer = styled.div`
     width: 100%;
-
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-`;
-
-const ContentContainer = styled.div`
     flex-direction: column;
-    gap: 2px;
+    gap: 12px;
 `;
 
-const LikeContainer = styled.div`
+const ChipBar = styled.div`
+    flex-direction: row;
+    gap: 8px;
+
+    overflow-y: hidden;
+    white-space: nowrap;
+`;
+
+const Chip = styled.div`
+    padding: 4px 14px;
+    background-color: ${Colors.Gray0};
+    border-radius: 100px;
+    align-items: center;
     flex-direction: row;
     gap: 12px;
 `;
@@ -29,35 +32,41 @@ const LikePairContainer = styled.div`
     gap: 4px;
 `;
 
-export interface TodayTipsProps {
+interface InfoBarProps {
     title: string | undefined,
-    content: string | undefined,
+    category: string | undefined,
     likes: number | undefined,
     hates: number | undefined,
-    imgUrl: string | undefined,
-    articleId: number | undefined
-};
+    content: string | undefined
+}
 
-const TodayTips = ({ title, content, likes, hates, imgUrl, articleId }: TodayTipsProps) => {
-    const navigate = useNavigate();
+const InfoBar = ({ title, category, likes, hates, content }: InfoBarProps) => {
     return (
-        <TodayTipsContainer
-            onClick={() => navigate(`/detail/${articleId}`)}
-        >
-            <ContentContainer>
-                <TextLoadingView
-                    text={title}
-                    font="semibold"
-                    size={16}
-                    color={Colors.Black}
-                />
-                <TextLoadingView
-                    text={content}
-                    font="medium"
-                    size={14}
-                    color={Colors.Gray2}
-                />
-                <LikeContainer>
+        <InfoContainer>
+            <TextLoadingView
+                text={title}
+                font="semibold"
+                size={20}
+                color={Colors.Black}
+            />
+            <ChipBar>
+                <Chip>
+                    <TextLoadingView
+                        text={`23분 전`}
+                        font="medium"
+                        size={12}
+                        color={Colors.Gray2}
+                    />
+                </Chip>
+                <Chip>
+                    <TextLoadingView
+                        text={`#${category}`}
+                        font="medium"
+                        size={12}
+                        color={Colors.Gray2}
+                    />
+                </Chip>
+                <Chip>
                     <LikePairContainer>
                         <IconButton
                             src="like"
@@ -84,18 +93,16 @@ const TodayTips = ({ title, content, likes, hates, imgUrl, articleId }: TodayTip
                             color={Colors.Gray2}
                         />
                     </LikePairContainer>
-                </LikeContainer>
-            </ContentContainer>
-            <ImageLoadingView
-                src={imgUrl}
-                width="76px"
-                height="76px"
-                radius={8}
-                objectFit="cover"
-                alt="image"
+                </Chip>
+            </ChipBar>
+            <TextLoadingView
+                text={content}
+                font="medium"
+                size={16}
+                color={Colors.Black}
             />
-        </TodayTipsContainer>
+        </InfoContainer>
     );
 };
 
-export default TodayTips;
+export default InfoBar;

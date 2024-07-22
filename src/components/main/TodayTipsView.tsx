@@ -19,15 +19,15 @@ interface TodayTipsViewProps {
 const TodayTipsView = ({ list }: TodayTipsViewProps) => {
     return (
         <TodayTipsViewContainer>
-            { list.map((props, idx) => (
+            { list.slice(0, 3).map((props, idx) => (
                 <TodayTips
                     key={idx}
                     title={props.title}
                     content={props.content}
-                    like={props.like}
-                    dislike={props.dislike}
-                    image={props.image}
-                    id={props.id}
+                    likes={props.likes}
+                    hates={props.hates}
+                    imgUrl={props.imgUrl}
+                    articleId={props.articleId}
                 />
             ))}
         </TodayTipsViewContainer>

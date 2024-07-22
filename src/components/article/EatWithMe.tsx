@@ -29,23 +29,23 @@ const EqualImageContainer = styled.div`
 `;
 
 export interface EatWithMeProps {
-    image: string | undefined,
+    imgUrl: string | undefined,
     title: string | undefined,
     content: string | undefined,
-    like: number | undefined,
-    dislike: number | undefined,
-    id: number | undefined
+    likes: number | undefined,
+    hates: number | undefined,
+    articleId: number | undefined
 };
 
-const EatWithMe = ({ image, title, content, like, dislike, id }: EatWithMeProps) => {
+const EatWithMe = ({ imgUrl, title, content, likes, hates, articleId }: EatWithMeProps) => {
     const navigate = useNavigate();
     return (
         <EatWithMeContainer
-            onClick={() => navigate(`/detail/${id}`)}
+            onClick={() => navigate(`/detail/${articleId}`)}
         >
             <EqualImageContainer>
                 <ImageLoadingView
-                    src={image}
+                    src={imgUrl}
                     width="100%"
                     height="100%"
                     radius={8}
@@ -73,7 +73,7 @@ const EatWithMe = ({ image, title, content, like, dislike, id }: EatWithMeProps)
                         onclick={() => {}}
                     />
                     <TextLoadingView
-                        text={`${like}개`}
+                        text={`${likes}개`}
                         font="regular"
                         size={12}
                         color={Colors.Gray2}
@@ -86,7 +86,7 @@ const EatWithMe = ({ image, title, content, like, dislike, id }: EatWithMeProps)
                         onclick={() => {}}
                     />
                     <TextLoadingView
-                        text={`${dislike}개`}
+                        text={`${hates}개`}
                         font="regular"
                         size={12}
                         color={Colors.Gray2}

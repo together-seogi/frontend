@@ -29,22 +29,22 @@ const EqualImageContainer = styled.div`
 `;
 
 export interface ThisIsGoodProps {
-    image: string | undefined,
+    imgUrl: string | undefined,
     title: string | undefined,
-    like: number | undefined,
-    dislike: number | undefined,
-    id: number | undefined
+    likes: number | undefined,
+    hates: number | undefined,
+    articleId: number | undefined
 };
 
-const ThisIsGood = ({ image, title, like, dislike, id }: ThisIsGoodProps) => {
+const ThisIsGood = ({ imgUrl, title, likes, hates, articleId }: ThisIsGoodProps) => {
     const navigate = useNavigate();
     return (
         <ThisIsGoodContainer
-            onClick={() => navigate(`/detail/${id}`)}
+            onClick={() => navigate(`/detail/${articleId}`)}
         >
             <EqualImageContainer>
                 <ImageLoadingView
-                    src={image}
+                    src={imgUrl}
                     width="100%"
                     height="100%"
                     radius={8}
@@ -66,7 +66,7 @@ const ThisIsGood = ({ image, title, like, dislike, id }: ThisIsGoodProps) => {
                         onclick={() => {}}
                     />
                     <TextLoadingView
-                        text={`${like}개`}
+                        text={`${likes}개`}
                         font="regular"
                         size={12}
                         color={Colors.Gray2}
@@ -79,7 +79,7 @@ const ThisIsGood = ({ image, title, like, dislike, id }: ThisIsGoodProps) => {
                         onclick={() => {}}
                     />
                     <TextLoadingView
-                        text={`${dislike}개`}
+                        text={`${hates}개`}
                         font="regular"
                         size={12}
                         color={Colors.Gray2}

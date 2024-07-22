@@ -16,15 +16,15 @@ interface EatWithMeViewProps {
 const EatWithMeView = ({ list }: EatWithMeViewProps) => {
     return (
         <EatWithMeViewContainer>
-            { list.map((props, idx) => (
+            { list.slice(3, 7).map((props, idx) => (
                 <EatWithMe
                     key={idx}
-                    image={props.image}
+                    imgUrl={props.imgUrl}
                     title={props.title}
                     content={props.content}
-                    like={props.like}
-                    dislike={props.dislike}
-                    id={props.id}
+                    likes={props.likes}
+                    hates={props.hates}
+                    articleId={props.articleId}
                 />
             ))}
         </EatWithMeViewContainer>

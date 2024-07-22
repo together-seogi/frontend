@@ -16,14 +16,14 @@ interface ThisIsGoodViewProps {
 const ThisIsGoodView = ({ list }: ThisIsGoodViewProps) => {
     return (
         <ThisIsGoodViewContainer>
-            { list.map((props, idx) => (
+            { list.slice(7, 11).map((props, idx) => (
                 <ThisIsGood
                     key={idx}
-                    image={props.image}
+                    imgUrl={props.imgUrl}
                     title={props.title}
-                    like={props.like}
-                    dislike={props.dislike}
-                    id={props.id}
+                    likes={props.likes}
+                    hates={props.hates}
+                    articleId={props.articleId}
                 />
             ))}
         </ThisIsGoodViewContainer>

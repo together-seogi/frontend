@@ -34,7 +34,7 @@ const ChipBar = styled.div`
     white-space: nowrap;
 `;
 
-const Chip = styled.div<{$color: Colors}>`
+const Chip = styled.button<{$color: Colors}>`
     padding: 6px 14px;
     background-color: ${props => props.$color};
     border-radius: 100px;

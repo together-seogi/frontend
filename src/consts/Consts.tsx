@@ -1,1 +1,1 @@
-export const baseUrl = "https://slogb.juany.kr/";
+export const baseUrl = "https://gaseo.octive.net";

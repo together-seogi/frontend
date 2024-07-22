@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
+import DetailPage from "./pages/DetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const Router = createBrowserRouter([
@@ -17,6 +18,10 @@ const Router = createBrowserRouter([
             {
                 path: "/search",
                 element: <SearchPage />
+            },
+            {
+                path: "/detail/:id",
+                element: <DetailPage />
             }
         ],
         errorElement: <NotFoundPage />

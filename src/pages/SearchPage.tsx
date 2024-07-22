@@ -4,6 +4,8 @@ import TextLoadingView from "../components/common/TextLoadingView";
 import { useEffect, useState } from "react";
 import ThisIsGood, { ThisIsGoodProps } from "../components/article/ThisIsGood";
 import Colors from "../consts/Colors";
+import axios from "axios";
+import { baseUrl } from "../consts/Consts";
 
 const SearchPageContainer = styled.div`
     width: 100%;
@@ -26,21 +28,9 @@ const ThisIsGoodViewContainer = styled.div`
 const SearchPage = () => {
     const [resultList, setResultList] = useState<ThisIsGoodProps[]>([]);
 
-    useEffect(() => {
-        setResultList([
-            {title: "1", like: 20, dislike: 200, image: undefined, id: 123},
-            {title: "2", like: 20, dislike: 200, image: undefined, id: 123},
-            {title: "3", like: 20, dislike: 200, image: undefined, id: 123},
-            {title: "4", like: 20, dislike: 200, image: undefined, id: 123},
-            {title: "5", like: 20, dislike: 200, image: undefined, id: 123},
-            {title: "6", like: 20, dislike: 200, image: undefined, id: 123},
-            {title: "7", like: 20, dislike: 200, image: undefined, id: 123},
-        ])
-    }, [])
-
     return (
         <SearchPageContainer>
-            <TopBar />
+            <TopBar buf={(props) => setResultList(props)} />
             <TextLoadingView
                 text={`검색 결과 ${resultList.length}`}
                 font="medium"
@@ -51,11 +41,11 @@ const SearchPage = () => {
                 { resultList.map((props, idx) => (
                     <ThisIsGood
                         key={idx}
-                        image={props.image}
+                        imgUrl={props.imgUrl}
                         title={props.title}
-                        like={props.like}
-                        dislike={props.dislike}
-                        id={props.id}
+                        likes={props.likes}
+                        hates={props.hates}
+                        articleId={props.articleId}
                     />
                 ))}
             </ThisIsGoodViewContainer>

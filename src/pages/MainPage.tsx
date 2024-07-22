@@ -5,6 +5,8 @@ import WholeView from "../components/main/WholeView";
 import TodayTipsView from "../components/main/TodayTipsView";
 import EatWithMeView from "../components/main/EatWithMeView";
 import ThisIsGoodView from "../components/main/ThisIsGoodView";
+import axios, { AxiosResponse } from "axios";
+import { baseUrl } from "../consts/Consts";
 
 const MainPageContainer = styled.div`
     width: 100%;
@@ -21,33 +23,45 @@ const MainPageContainer = styled.div`
 export interface ArticleListProps {
     title: string | undefined,
     content: string | undefined,
-    like: number | undefined,
-    dislike: number | undefined,
-    image: string | undefined,
-    id: number | undefined
+    likes: number | undefined,
+    hates: number | undefined,
+    imgUrl: string | undefined,
+    articleId: number | undefined
 };
 
 const MainPage = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [articleList, setArticleList] = useState<ArticleListProps[]>([])
 
+    const transformData = (data: any[]): ArticleListProps[] => {
+        return data.map(item => ({
+            title: item.title,
+            content: item.content,
+            likes: item.likes,
+            hates: item.hates,
+            imgUrl: item.imgUrl,
+            articleId: item.articleId
+        }));
+      }
+
+    const fetchData = async (): Promise<ArticleListProps[]> => {
+        try {
+          const response: AxiosResponse<any[]> = await axios.get(`${baseUrl}/api/board/main`);
+          // 리스트 형태의 데이터 변환
+          const transformedData = transformData(response.data);
+          return transformedData;
+        } catch (error) {
+        //   console.error('Error fetching data:', error);
+          return [];
+        }
+      }
+
     useEffect(() => {
-        setArticleList(
-            [
-                {title: "1", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "2", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "3", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "4", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "5", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "6", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "7", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "8", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "9", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "10", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-                {title: "11", content: "이것은 아마도 내용일 겁니다.", like: 20, dislike: 200, image: undefined, id: 1234},
-            ]
-        )
-    }, [])
+        fetchData().then(data => {
+            // console.log(data)
+            setArticleList(data)
+          });
+    }, [tabIndex])
 
     const tabView = () => {
         switch (tabIndex) {
