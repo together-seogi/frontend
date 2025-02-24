@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import IconButton from "../common/IconButton";
-import TextLoadingView from "../common/TextLoadingView";
 import Colors from "../../consts/Colors";
-import { useCallback, useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import { baseUrl } from "../../consts/Consts";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +43,6 @@ const TopBar = ({ buf }: TopBarProps) => {
         letterSpacing: 0.8,
         lineHeight: 1.2
     };
-    const [inputValue, setInputValue] = useState('');
     const transformData = (data: any[]): ThisIsGoodProps[] => {
         return data.map(item => {
             console.log("Mapping item:", item);

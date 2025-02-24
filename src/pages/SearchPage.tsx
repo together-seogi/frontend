@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import TopBar from "../components/search/TopBar";
 import TextLoadingView from "../components/common/TextLoadingView";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ThisIsGood, { ThisIsGoodProps } from "../components/article/ThisIsGood";
 import Colors from "../consts/Colors";
-import axios from "axios";
-import { baseUrl } from "../consts/Consts";
 
 const SearchPageContainer = styled.div`
     width: 100%;
