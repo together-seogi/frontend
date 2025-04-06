@@ -1,1 +1,1 @@
-export const baseUrl = "https://gaseo.octive.net";
+export const baseUrl = "https://api-tseogi.juany.kr";
